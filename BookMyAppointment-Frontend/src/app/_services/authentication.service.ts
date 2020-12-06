@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { Consumer } from '../_models/consumer';
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class AuthenticationService {
   private baseUrl='http://localhost:8080/api/v1/consumer';
   signUp(consumer: Consumer): Observable<Object>{
     return this.httpClient.post(`${this.baseUrl}`, consumer);
+  }
+
+  authenticate(user:User) {
+    return this.httpClient.post<any>('http://localhost:8080/api/v1/authenticateUser',user);
   }
 
 }

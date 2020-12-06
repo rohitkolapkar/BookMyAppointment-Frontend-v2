@@ -1,9 +1,10 @@
 export class User{
-    userId:number;
-    userName:string;
-    userPhone:number;
-    userPassword:string;
-    userEmail:string;
-    active:boolean;
+    id:number;
+    email:string;
+    password:string;
     role:string;
-  }
+    name:string;
+    mobile:string;
+    active:boolean;
+    
+}
