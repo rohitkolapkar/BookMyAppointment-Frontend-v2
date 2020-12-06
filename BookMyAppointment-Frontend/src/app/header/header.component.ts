@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  consumer:boolean;
+  businessOwner:boolean;
+  admin:boolean;
+  visitor:boolean;
+
   constructor() { }
 
   ngOnInit(): void {
