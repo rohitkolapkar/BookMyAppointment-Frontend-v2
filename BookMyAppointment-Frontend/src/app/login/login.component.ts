@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username = '';
-  password = '';
   user: User={"id": 0, "name":"", "password":"", "mobile": "", "email":"", "active": null, "role":""};
   invalidLogin = false;
   constructor(private router:Router,private loginService:AuthenticationService) { }
@@ -20,7 +18,6 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin(){
-
     this.loginService.authenticate(this.user).subscribe(
       data=>{
         console.log(data);
@@ -37,7 +34,7 @@ export class LoginComponent implements OnInit {
           }
 
         }else{
-          console.log("Invalid Login Credentials..");
+          //console.log("Invalid Login Credentials..");
           this.invalidLogin = true;
         
         }
