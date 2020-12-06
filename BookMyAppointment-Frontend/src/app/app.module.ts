@@ -1,8 +1,10 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { ConsumerSignupComponent } from './consumer-signup/consumer-signup.component';
 import { ServiceProviderSignupComponent } from './service-provider-signup/service-provider-signup.component';
+
 
 @NgModule({
   declarations: [
@@ -27,8 +30,11 @@ import { ServiceProviderSignupComponent } from './service-provider-signup/servic
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    PasswordStrengthMeterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

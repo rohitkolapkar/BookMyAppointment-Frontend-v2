@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <div class="row">
+        <div class="card col-md-4 offset-md-4 shadow-lg p-3 mb-5 bg-white">
+            <h3 style="margin-top: 20px; font-size: x-large;">Consumer Sign Up</h3>
+
+            <div class="row">
+                Name : <input (blur)="validateName();" class="form-control" type="text" name="name"
+                    [(ngModel)]="consumer.consumerName">
+                <small *ngIf="nameFlag" style="color: red;">Invalid consumer Name</small>
+            </div>
+            <div class="row">
+                Password : <input (blur)="validatePassword();" class="form-control" type="password" name="password"
+                    [(ngModel)]="consumer.consumerPassword" #password="ngModel" minlength="5" maxlength="50" required>
+                <small *ngIf="passwordFlag" style="color: red;">Min length should be 8 chars</small>
+                <!-- <ng2-password-strength-bar [passwordToCheck]="consumer.consumerPassword" [barLabel]="barLabel" [barColors]="myColors"></ng2-password-strength-bar> -->
+                <password-strength-meter [password]="consumer.consumerPassword" [minPasswordLength]=8
+                    [colors]="barLabel" [enableFeedback]=true></password-strength-meter>
+            </div>
+            <div class="row">
+                Phone No : <input (blur)="validatePhone();" class="form-control" type="number" name="phone"
+                    [(ngModel)]="consumer.consumerPhone">
+                <small *ngIf="phoneFlag" style="color: red;">Invalid Phone Number</small>
+            </div>
+            <div class="row">
+                Email : <input (blur)="validateEmail(); enableButton();" class="form-control" type="email" name="email"
+                    [(ngModel)]="consumer.consumerEmail">
+                <small *ngIf="emailFlag" style="color: red;">Invalid Email</small>
+            </div>
+            <div class="row">
+                <button [disabled]="buttonFlag" class="regBtn btn btn-success" (click)="signUp()">
+                    Register
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
