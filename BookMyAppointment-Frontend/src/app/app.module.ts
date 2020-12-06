@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { ConsumerSignupComponent } from './consumer-signup/consumer-signup.component';
 import { ServiceProviderSignupComponent } from './service-provider-signup/service-provider-signup.component';
+import { ConsumerHomeComponent } from './consumer-home/consumer-home.component';
+import { ServiceProviderHomeComponent } from './service-provider-home/service-provider-home.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { ServiceProviderSignupComponent } from './service-provider-signup/servic
     FooterComponent,
     LoginComponent,
     ConsumerSignupComponent,
-    ServiceProviderSignupComponent
+    ServiceProviderSignupComponent,
+    ConsumerHomeComponent,
+    ServiceProviderHomeComponent
     
   ],
   imports: [

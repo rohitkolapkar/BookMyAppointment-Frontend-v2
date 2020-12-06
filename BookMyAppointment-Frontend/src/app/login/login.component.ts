@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       if(this.user.role === 'consumer') {
         sessionStorage.setItem('userRole', 'consumer');
         this.invalidLogin = false;
-        this.router.navigate(["home"]).then(()=> {
+        this.router.navigate(["c/home"]).then(()=> {
           window.location.reload();
         });
       }
