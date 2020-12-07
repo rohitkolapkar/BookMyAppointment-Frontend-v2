@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
 
       sessionStorage.setItem('userId', String(this.user.id));
       sessionStorage.setItem('userEmail', String(this.user.email));
+      sessionStorage.setItem('userName',String(this.user.name));
       if(this.user.role === 'consumer') {
         sessionStorage.setItem('userRole', 'consumer');
         this.invalidLogin = false;

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { AuthguardService } from './_services/authguard.service';
+
 import { ConsumerHomeComponent } from './consumer-home/consumer-home.component';
 import { ConsumerSignupComponent } from './consumer-signup/consumer-signup.component';
 import { HomeComponent } from './home/home.component';
@@ -12,7 +15,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'c/signup',component:ConsumerSignupComponent},
   {path:'sp/signup',component:ServiceProviderSignupComponent},
-  {path:'c/home',component:ConsumerHomeComponent}
+  {path:'c/home',component:ConsumerHomeComponent,canActivate:[AuthguardService]}
 ];
 
 @NgModule({

@@ -29,7 +29,7 @@ export class ConsumerSignupComponent implements OnInit {
   // Adds a new consumer
   signUp() {
     console.log(this.consumer);
-    this.authenticationService.signUp(this.consumer)
+    this.authenticationService.consumerSignUp(this.consumer)
     .subscribe(data=>console.log(data),error=>console.log(error));
     this.router.navigate(["login"]);
   }
