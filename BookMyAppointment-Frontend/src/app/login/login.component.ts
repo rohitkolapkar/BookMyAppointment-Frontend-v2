@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
             this.invalidLogin=false;
             this.redirect();
           }
+         
 
         }else{
           //console.log("Invalid Login Credentials..");
@@ -52,19 +53,22 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('userId', String(this.user.id));
       sessionStorage.setItem('userEmail', String(this.user.email));
       sessionStorage.setItem('userName',String(this.user.name));
+       //setting userName property in Authentication service
+       this.loginService.setUserName(this.user.name);
       if(this.user.role === 'consumer') {
         sessionStorage.setItem('userRole', 'consumer');
+        //calling setConsumer method in Authentication service
+        this.loginService.setConsumer();
         this.invalidLogin = false;
-        this.router.navigate(["c/home"]).then(()=> {
-          window.location.reload();
-        });
+        this.router.navigate(["c/home"]);
       }
       else if(this.user.role === 'serviceProvider') {
         sessionStorage.setItem('userRole', 'serviceProvider');
+        this.loginService.setServiceProvider();
         this.invalidLogin = false;
-        this.router.navigate(["home"]).then(()=> {
-          window.location.reload();
-        });
+        this.router.navigate(["sp/home"]);
+      }else{
+        //for admin : pending
       }
     }
 

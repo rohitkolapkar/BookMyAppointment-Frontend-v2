@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { Observable, Subject} from 'rxjs';
 import { Consumer } from '../_models/consumer';
 import { User } from '../_models/user';
 
@@ -8,15 +8,13 @@ import { User } from '../_models/user';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  consumer:boolean;
-  serviceProvider:boolean;
-  admin:boolean;
-  visitor:boolean;
+  user:string;
+  userChange: Subject<string> = new Subject<string>();
+  userName:string;
+  userNameChange:Subject<string> = new Subject<string>();
+  
   constructor(private httpClient:HttpClient) { 
-    this.consumer=false;
-    this.serviceProvider=false;
-    this.admin=false;
-    this.visitor=true;
+    this.user="visitor";
   }
   
   private baseUrl='http://localhost:8080/api/v1/consumer';
@@ -24,7 +22,7 @@ export class AuthenticationService {
     return this.httpClient.post(`${this.baseUrl}`, consumer);
   }
 
-  authenticate(user:User) {
+  authenticate(user:User):Observable<any>{
     return this.httpClient.post<any>('http://localhost:8080/api/v1/authenticateUser',user);
   }
 
@@ -36,33 +34,34 @@ export class AuthenticationService {
   
     // Removes user session(logout)
     logOut() {
+      sessionStorage.removeItem('userName');
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('userEmail');
       sessionStorage.removeItem('userRole');
+      this.setVisitor();
     }
+    setUserName(name:string){
+      this.userName=name;
+      this.userNameChange.next(this.userName);
+    }
+
     setVisitor(){
-      this.consumer=false;
-      this.serviceProvider=false;
-      this.admin=false;
-      this.visitor=true;
+      this.user="visitor";
+      this.userName="";
+      this.userChange.next(this.user);
+      this.userNameChange.next(this.userName);
      }
      setConsumer(){
-      this.consumer=true;
-      this.serviceProvider=false;
-      this.admin=false;
-      this.visitor=false;
+      this.user="consumer";
+      this.userChange.next(this.user);
      }
      setServiceProvider(){
-      this.consumer=false;
-      this.serviceProvider=true;
-      this.admin=false;
-      this.visitor=false;
+      this.user="serviceProvider";
+      this.userChange.next(this.user);
      }
      setAdmin(){
-      this.consumer=false;
-      this.serviceProvider=false;
-      this.admin=true;
-      this.visitor=false;
+      this.user="admin";
+      this.userChange.next(this.user);
      }
 
 }
