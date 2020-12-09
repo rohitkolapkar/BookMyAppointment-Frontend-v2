@@ -14,7 +14,7 @@ export class AuthenticationService {
   userNameChange:Subject<string> = new Subject<string>();
   
   constructor(private httpClient:HttpClient) { 
-    this.user="visitor";
+    
   }
   
   private baseUrl='http://localhost:8080/api/v1/consumer';
@@ -28,40 +28,45 @@ export class AuthenticationService {
 
     // Checks whether the user is logged in
   isUserLoggedIn():boolean {
-    let user = sessionStorage.getItem('userId')
-    return !(user === null)
+    let userId = sessionStorage.getItem('userId');
+    return !(userId === null);
   }
-  
-    // Removes user session(logout)
-    logOut() {
-      sessionStorage.removeItem('userName');
-      sessionStorage.removeItem('userId');
-      sessionStorage.removeItem('userEmail');
-      sessionStorage.removeItem('userRole');
-      this.setVisitor();
-    }
-    setUserName(name:string){
-      this.userName=name;
-      this.userNameChange.next(this.userName);
-    }
 
-    setVisitor(){
-      this.user="visitor";
-      this.userName="";
-      this.userChange.next(this.user);
-      this.userNameChange.next(this.userName);
-     }
-     setConsumer(){
-      this.user="consumer";
-      this.userChange.next(this.user);
-     }
-     setServiceProvider(){
-      this.user="serviceProvider";
-      this.userChange.next(this.user);
-     }
-     setAdmin(){
-      this.user="admin";
-      this.userChange.next(this.user);
-     }
+  getUserRole():string{
+    let userRole = sessionStorage.getItem('userRole');
+    return userRole;
+  }
+
+  // Removes user session(logout)
+  logOut() {
+    sessionStorage.removeItem('userName');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('userEmail');
+    sessionStorage.removeItem('userRole');
+    this.setVisitor();
+  }
+  setUserName(name:string){
+    this.userName=name;
+    this.userNameChange.next(this.userName);
+  }
+
+  setVisitor(){
+    this.user="visitor";
+    this.userName="";
+    this.userChange.next(this.user);
+    this.userNameChange.next(this.userName);
+  }
+  setConsumer(){
+  this.user="consumer";
+  this.userChange.next(this.user);
+  }
+  setServiceProvider(){
+  this.user="serviceProvider";
+  this.userChange.next(this.user);
+  }
+  setAdmin(){
+  this.user="admin";
+  this.userChange.next(this.user);
+  }
 
 }

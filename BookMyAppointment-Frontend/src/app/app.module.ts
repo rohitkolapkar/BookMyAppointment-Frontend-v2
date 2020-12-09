@@ -16,6 +16,8 @@ import { ConsumerSignupComponent } from './consumer-signup/consumer-signup.compo
 import { ServiceProviderSignupComponent } from './service-provider-signup/service-provider-signup.component';
 import { ConsumerHomeComponent } from './consumer-home/consumer-home.component';
 import { ServiceProviderHomeComponent } from './service-provider-home/service-provider-home.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { ServiceProviderHomeComponent } from './service-provider-home/service-pr
     ConsumerSignupComponent,
     ServiceProviderSignupComponent,
     ConsumerHomeComponent,
-    ServiceProviderHomeComponent
+    ServiceProviderHomeComponent,
+    AdminHomeComponent,
+    UserSettingsComponent
     
   ],
   imports: [

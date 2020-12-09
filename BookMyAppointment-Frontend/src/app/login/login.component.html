@@ -5,6 +5,11 @@
       <div class="alert alert-danger" *ngIf="invalidLogin">
         <strong>Invalid Login Details</strong>
       </div>
+      <div class="alert alert-warning" *ngIf="userBlocked">
+        <strong>Account has been blocked, please contact Admin.</strong><br>
+        <a href="mailto:bookmyappointment.com@gmail.com" style="color:red;">Write to us at
+          bookmyappointment.com@gmail.com</a>
+      </div>
       <!-- <small *ngIf="invalidLogin" style="color: red;">Invalid Login Details</small> -->
       <div class="row">
         User Name : <input class="form-control" type="email" name="username" [(ngModel)]="user.email">

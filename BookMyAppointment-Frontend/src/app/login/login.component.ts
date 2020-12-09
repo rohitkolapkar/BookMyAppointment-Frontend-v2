@@ -12,9 +12,20 @@ export class LoginComponent implements OnInit {
 
   user: User={"id": 0, "name":"", "password":"", "mobile": "", "email":"", "active": null, "role":""};
   invalidLogin = false;
+  userBlocked = false;
+  userRole:string;
   constructor(private router:Router,private loginService:AuthenticationService) { }
 
   ngOnInit(): void {
+    if(this.loginService.isUserLoggedIn()){
+      this.userRole=sessionStorage.getItem("userRole");
+      if(this.userRole==="consumer")
+        this.router.navigate(["c/home"]);
+      else if(this.userRole==="serviceProvider")
+        this.router.navigate(["sp/home"]);
+      else
+        this.router.navigate(["a/home"]);
+    }
   }
 
   checkLogin(){
@@ -22,7 +33,8 @@ export class LoginComponent implements OnInit {
       data=>{
         console.log(data);
         if(data.status==="success"){
-          
+          //we are ignoring password and mobile number
+          this.user.id=data.responseObject.id;
           this.user.email=data.responseObject.email;
           this.user.role=data.responseObject.role;
           this.user.name=data.responseObject.name;
@@ -32,16 +44,15 @@ export class LoginComponent implements OnInit {
             this.invalidLogin=false;
             this.redirect();
           }
-         
+          else{
+            this.userBlocked = true;
+          }
 
         }else{
-          //console.log("Invalid Login Credentials..");
           this.invalidLogin = true;
-        
         }
         
       },error=>{
-        console.log("Invalid Login Credentials..");
         this.invalidLogin = true;
         console.log(error)
       }
@@ -68,7 +79,10 @@ export class LoginComponent implements OnInit {
         this.invalidLogin = false;
         this.router.navigate(["sp/home"]);
       }else{
-        //for admin : pending
+        sessionStorage.setItem('userRole', 'admin');
+        this.loginService.setAdmin();
+        this.invalidLogin = false;
+        this.router.navigate(["a/home"]);
       }
     }
 

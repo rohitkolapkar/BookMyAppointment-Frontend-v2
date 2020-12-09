@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../_services/authentication.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,13 +17,10 @@ export class HeaderComponent implements OnInit {
   visitor:boolean;
   _subscription: Subscription;
   _subscription2: Subscription;
+  userRole:string;
 
   constructor(private router:Router,public nav:AuthenticationService) {
     console.log("In constructor of header");
-    this.consumer=false;
-    this.serviceProvider=false;
-    this.admin=false;
-    this.visitor=true;
     this._subscription = nav.userChange.subscribe((value) => { 
       if(value==="consumer"){
         this.consumer = true; 
@@ -54,6 +52,18 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(this.nav.isUserLoggedIn()){
+      this.nav.setUserName(sessionStorage.getItem("userName"));
+      this.userRole=sessionStorage.getItem("userRole");
+      if(this.userRole==="consumer")
+        this.nav.setConsumer();
+      else if(this.userRole==="serviceProvider")
+        this.nav.setServiceProvider()
+      else
+        this.nav.setAdmin();
+    }else{
+      this.nav.setVisitor();
+    }
 
   }
 
@@ -68,6 +78,23 @@ export class HeaderComponent implements OnInit {
     this.nav.logOut();
     this.router.navigate(["home"]);
   }
+  userSettings(){
+    this.router.navigate(["settings"]);
+  }
+
+
+
+  //admin routes
+  aHome(){
+    this.router.navigate(["a/home"]);
+  }
+  consumersList(){
+    //pending
+  }
+  serviceProvicersList(){
+    //pending
+  }
+
 
 
   //consumer routes

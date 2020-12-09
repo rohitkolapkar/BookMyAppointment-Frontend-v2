@@ -12,9 +12,5 @@ export class ConsumerHomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-   //consumer routes
-   cSignUp(){
-    this.router.navigate(["c/signup"]);
-  }
 
 }

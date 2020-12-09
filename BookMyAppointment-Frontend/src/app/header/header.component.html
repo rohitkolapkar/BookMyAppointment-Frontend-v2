@@ -51,12 +51,39 @@
                         Account
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" (click)="cProfile">PROFILE</a>
+                        <a class="dropdown-item" (click)="cProfile()">PROFILE</a>
+                        <a class="dropdown-item" (click)="userSettings()">SETTINGS</a>
                         <a class="dropdown-item" (click)="logout()">LOGOUT</a>
                     </div>
                 </li>
             </ul>
             <!--Consumer's Nav Bar ENDS -->
+            <!--Admin's Nav Bar starts-->
+            <ul class="navbar-nav mr-auto" *ngIf="admin">
+                <li class="nav-item">
+                    <a class="nav-link" (click)="consumersList()">Consumers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="serviceProvicersList()">Service Providers</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons" *ngIf="admin">
+                <li class="nav-item">
+                    <a class="nav-link" (click)="aHome()"><strong>Hi, {{userName}}</strong></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" (click)="userSettings()">SETTINGS</a>
+                        <a class="dropdown-item" (click)="logout()">LOGOUT</a>
+                    </div>
+                </li>
+            </ul>
+            <!--Admin's Nav Bar ENDS -->
+
 
 
 

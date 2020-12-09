@@ -33,6 +33,10 @@
                     <strong> No more engaged phones.</strong>
                     <strong> No more hushed conversations in open plan offices.</strong></p>
                 <a class="btn btn-primary btn-lg" role="button" (click)="cSignUp()">Consumer Registration</a>
+                <div class="alert alert-warning alert-dismissible" *ngIf="alreadyLoggedIn">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Your are already Logged in. Logout first then try.</strong>
+                </div>
             </div>
         </div>
         <!-- <div class="carousel-item">
@@ -51,6 +55,9 @@
         <span class="carousel-control-next-icon"></span>
     </a>
 </div>
+
+
+
 <!-- Carousel ENDS-->
 <div class="wrapper">
 

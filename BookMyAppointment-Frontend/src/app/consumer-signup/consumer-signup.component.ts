@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class ConsumerSignupComponent implements OnInit {
 
-
+  userRole:string;
   consumer: Consumer={"consumerId": null, "consumerName":"", "consumerPassword":"", "consumerPhone": null, "consumerEmail":""};
 
   public barLabel: string = "Password strength:";
@@ -21,8 +21,14 @@ export class ConsumerSignupComponent implements OnInit {
 
 
   ngOnInit() {
-    if(sessionStorage.getItem('role') === 'consumer' || sessionStorage.getItem('role') === 'serviceProvider') {
-      this.router.navigate(['noauth']);
+    if(this.authenticationService.isUserLoggedIn()){
+      this.userRole=sessionStorage.getItem("userRole");
+      if(this.userRole==="consumer")
+        this.router.navigate(["c/home"]);
+      else if(this.userRole==="serviceProvider")
+        this.router.navigate(["sp/home"]);
+      else
+        this.router.navigate(["a/home"]);
     }
   }
 
