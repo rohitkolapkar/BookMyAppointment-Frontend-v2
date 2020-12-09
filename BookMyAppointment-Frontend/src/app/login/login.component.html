@@ -2,9 +2,12 @@
   <div class="row">
     <div class="card col-md-4 offset-md-4 shadow-lg p-3 mb-5 bg-white">
       <h3 style="margin-top: 20px;">LOGIN</h3>
-      <small *ngIf="invalidLogin" style="color: red;">Invalid Login Details</small>
+      <div class="alert alert-danger" *ngIf="invalidLogin">
+        <strong>Invalid Login Details</strong>
+      </div>
+      <!-- <small *ngIf="invalidLogin" style="color: red;">Invalid Login Details</small> -->
       <div class="row">
-        User Name : <input class="form-control" type="text" name="username" [(ngModel)]="user.email">
+        User Name : <input class="form-control" type="email" name="username" [(ngModel)]="user.email">
       </div>
       <div class="row">
         Password : <input class="form-control" type="password" name="password" [(ngModel)]="user.password">
