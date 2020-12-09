@@ -10,10 +10,10 @@
   padding: 20px;
   text-align: center;
 }
-.card-title {
+/* .card-title {
   margin-bottom: 20px;
   font-size: xx-large;
-}
+} */
 .findBtn {
   width: 100%;
   height: 50px;
@@ -97,7 +97,7 @@ a:hover {
   position: absolute;
   bottom: 10%;
   left: 10%;
-  z-index: 10%;
+  z-index: 20%;
   color: white;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
