@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { Observable, Subject} from 'rxjs';
 import { Consumer } from '../_models/consumer';
 import { User } from '../_models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,14 @@ export class AuthenticationService {
   constructor(private httpClient:HttpClient) { 
     
   }
-  
-  private baseUrl='http://localhost:8080/api/v1/consumer';
+  //apiUrl:'http://localhost:8080/api/v1'
+  private apiUrl=environment.apiUrl;
   consumerSignUp(consumer: Consumer): Observable<Object>{
-    return this.httpClient.post(`${this.baseUrl}`, consumer);
+    return this.httpClient.post(`${this.apiUrl}/consumer`, consumer);
   }
 
   authenticate(user:User):Observable<any>{
-    return this.httpClient.post<any>('http://localhost:8080/api/v1/authenticateUser',user);
+    return this.httpClient.post<any>(`${this.apiUrl}/authenticateUser`,user);
   }
 
     // Checks whether the user is logged in
