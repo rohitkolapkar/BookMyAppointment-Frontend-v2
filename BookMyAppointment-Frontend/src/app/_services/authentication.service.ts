@@ -4,6 +4,7 @@ import { Observable, Subject} from 'rxjs';
 import { Consumer } from '../_models/consumer';
 import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
+import { ServiceProvider } from '../_models/ServiceProvider';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,11 @@ export class AuthenticationService {
   private apiUrl=environment.apiUrl;
   consumerSignUp(consumer: Consumer): Observable<Object>{
     return this.httpClient.post(`${this.apiUrl}/consumer`, consumer);
+  }
+
+  serviceProviderSignUp(ServiceProvider: ServiceProvider): Observable<Object>{
+    console.log("In service layer "+ ServiceProvider)
+    return this.httpClient.post(`${this.apiUrl}/serviceProvider`, ServiceProvider);
   }
 
   authenticate(user:User):Observable<any>{

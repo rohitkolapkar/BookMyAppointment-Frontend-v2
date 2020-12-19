@@ -134,5 +134,8 @@
       }
     }
   },
-  "defaultProject": "BookMyAppointment-Frontend"
+  "defaultProject": "BookMyAppointment-Frontend",
+  "cli": {
+    "analytics": false
+  }
 }
