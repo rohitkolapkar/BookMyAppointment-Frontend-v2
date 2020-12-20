@@ -11,74 +11,90 @@
                             <div class="controls">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group"> <label for="form_businessName">Business Name *</label> <input
-                                                id="form_businessName" type="text" name="businessName" [(ngModel)]="ServiceProvider.businessName" class="form-control"
+                                        <div class="form-group"> <label for="form_businessName">Business Name *</label>
+                                            <input id="form_businessName" type="text" name="businessName"
+                                                [(ngModel)]="serviceProvider.businessName" class="form-control"
                                                 placeholder="Please enter your Business Name *" required="required"
-                                                data-error="Firstname is required."> </div>
+                                                data-error="Firstname is required.">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group"> <label for="form_spName">Name *</label> <input
-                                                id="form_spName" type="text" name="spName" class="form-control" [(ngModel)]="ServiceProvider.spName"
+                                                id="form_spName" type="text" name="spName" class="form-control"
+                                                [(ngModel)]="serviceProvider.spName"
                                                 placeholder="Please enter your Name *" required="required"
                                                 data-error="Firstname is required."> </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_spEmail">Business Email *</label> <input
-                                                id="form_email" type="email" name="email" class="form-control" [(ngModel)]="ServiceProvider.spEmail"
+                                        <div class="form-group"> <label for="form_spEmail">Business Email *</label>
+                                            <input id="form_email" type="email" name="email" class="form-control"
+                                                [(ngModel)]="serviceProvider.spEmail"
                                                 placeholder="Please enter your email *" required="required"
-                                                data-error="Valid email is required."> </div>
-                                    </div>     
+                                                data-error="Valid email is required.">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group"> <label for="form_spPhone">Phone Number*</label> <input
-                                                id="form_spPhone" type="text" name="spPhone" class="form-control" [(ngModel)]="ServiceProvider.spPhone"
+                                                id="form_spPhone" type="text" name="spPhone" class="form-control"
+                                                [(ngModel)]="serviceProvider.spPhone"
                                                 placeholder="Please enter your phone number *" required="required"
                                                 data-error="Valid phone is required."> </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group"> <label for="form_spPassword">Password *</label> <input
-                                                id="form_spPassword" type="password" name="spPassword" class="form-control" [(ngModel)]="ServiceProvider.spPassword"
+                                                id="form_spPassword" type="password" name="spPassword"
+                                                class="form-control" [(ngModel)]="serviceProvider.spPassword"
                                                 placeholder="Please enter password *" required="required"
                                                 data-error="password is required."> </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_categoryName">Business Category *</label> 
-                                            <select id="form_categoryName" name="categoryName" class="form-control" [(ngModel)]="ServiceProvider.serviceCategory.categoryName"
-                                                required="required" data-error="Please specify your Category.">
-                                                <option value="" selected disabled>--Select Business Category--</option>
-                                                <option>Test1</option>
-                                                <option>Test2</option>
-                                                <option>Test3</option>
-                                            </select> 
+                                        <div class="form-group"> <label for="form_categoryName">Business Category
+                                                *</label>
+                                            <select id="form_categoryName" name="categoryName" class="form-control"
+                                                required="required" data-error="Please specify your Category."
+                                                (change)="filterCategory($event)">
+                                                <option value="" selected disabled>--Select Category--</option>
+                                                <option [value]="city['categoryId']" *ngFor="let city of categories">
+                                                    {{city['categoryName']}}
+
+                                                </option>
+                                            </select>
+
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_cityName">City *</label> 
-                                            <select id="form_cityName" name="cityName" class="form-control" [(ngModel)]="ServiceProvider.city.cityName"
-                                                required="required" data-error="Please specify your city.">
+                                        <div class="form-group"> <label for="form_cityName">City *</label>
+                                            <select id="form_cityName" name="cityName" class="form-control"
+                                                required="required" data-error="Please specify your city."
+                                                (change)="filterCity($event)">
                                                 <option value="" selected disabled>--Select City--</option>
-                                                <option>Pune</option>
-                                                <option>Mumbai</option>
-                                                <option>Nashik</option>
-                                            </select> 
+                                                <option [value]="city['cityId']" *ngFor="let city of cities">
+                                                    {{city['cityName']}}
+
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group"> <label for="form_businessAddress">Business Address *</label> <textarea
-                                                id="form_businessAddress" name="businessAddress" class="form-control" [(ngModel)]="ServiceProvider.businessAddress"
-                                                placeholder="Write your businessAddress here." rows="2" required="required"
-                                                data-error="Please fill Address Details"></textarea> </div>
+                                        <div class="form-group"> <label for="form_businessAddress">Business Address
+                                                *</label> <textarea id="form_businessAddress" name="businessAddress"
+                                                class="form-control" [(ngModel)]="serviceProvider.businessAddress"
+                                                placeholder="Write your businessAddress here." rows="2"
+                                                required="required" data-error="Please fill Address Details"></textarea>
+                                        </div>
                                     </div>
                                     <div class="col-md-12"> <input type="submit"
-                                            class="btn btn-dark btn-send pt-2 btn-block " value="Register" (click)="signUp()"> 
+                                            class="btn btn-dark btn-send pt-2 btn-block " value="Register"
+                                            (click)="signUp()">
                                     </div>
                                 </div>
                             </div>

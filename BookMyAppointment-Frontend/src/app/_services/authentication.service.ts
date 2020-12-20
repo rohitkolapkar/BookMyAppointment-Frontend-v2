@@ -24,9 +24,10 @@ export class AuthenticationService {
     return this.httpClient.post(`${this.apiUrl}/consumer`, consumer);
   }
 
-  serviceProviderSignUp(ServiceProvider: ServiceProvider): Observable<Object>{
-    console.log("In service layer "+ ServiceProvider)
-    return this.httpClient.post(`${this.apiUrl}/serviceProvider`, ServiceProvider);
+  serviceProviderSignUp(serviceProvider: ServiceProvider): Observable<Object>{
+    console.log("In service layer ")
+    console.log(serviceProvider)
+    return this.httpClient.post(`${this.apiUrl}/serviceProvider`, serviceProvider);
   }
 
   authenticate(user:User):Observable<any>{
