@@ -14,6 +14,7 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { Role } from './_models/role';
 import { BookingComponent } from './booking/booking.component';
 import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-step-form.component';
+import { ListServicesComponent } from './list-services/list-services.component';
 
 
 
@@ -63,6 +64,13 @@ const routes: Routes = [
     canActivate:[AuthguardService],
     data:{roles:[Role.ServiceProvider]}
   },
+  {
+    path:'sp/services',
+    component:ListServicesComponent,
+    canActivate:[AuthguardService],
+    data:{roles:[Role.ServiceProvider]}
+  },
+  
   {
     path:'a/home',
     component:AdminHomeComponent,

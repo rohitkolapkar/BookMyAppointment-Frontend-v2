@@ -1,5 +1,6 @@
 export class Service {
     serviceName: string
-    serviceDuration: string
+    serviceDuration: any
     servicePrice: number
+    spId:number
   }

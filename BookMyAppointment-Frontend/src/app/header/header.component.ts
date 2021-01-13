@@ -118,6 +118,9 @@ export class HeaderComponent implements OnInit {
   spSignUp(){
     this.router.navigate(["sp/signup"]);
   }
+  spServices(){
+    this.router.navigate(["sp/services"]);
+  }
 
 
   ngOnDestroy() {

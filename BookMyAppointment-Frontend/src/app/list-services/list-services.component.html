@@ -1,0 +1,83 @@
+<hr>
+<hr>
+<hr>
+<div class="container-fluid">
+
+    <div class="card offer-card shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Add a Service</h1>
+            </div>
+
+        </div>
+
+        <form id="contact-form" role="form">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group"> <label for="form_serviceDuration">Service Name*</label>
+                            <input id="form_serviceName" type="text" name="serviceName"
+                                [(ngModel)]="service.serviceName" class="form-control"
+                                placeholder="Please enter service name *" required="required"
+                                data-error="service name is required.">
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group"> <label for="form_serviceDuration">Service Duration*</label>
+                            <input id="form_serviceDuration" type="text" name="serviceDuration"
+                                [(ngModel)]="service.serviceDuration" class="form-control"
+                                placeholder="Format HH:MM:SS*" required="required"
+                                data-error="service duration is required.">
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" col-sm-3">
+                    <div class="form-group">
+                        <div class="form-group"> <label for="form_serviceDuration">Service Price*</label>
+                            <input id="form_serviceDuration" type="number" name="serviceDuration"
+                                [(ngModel)]="service.servicePrice" class="form-control"
+                                placeholder="Please enter service price *" required="required"
+                                data-error="service price is required.">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="form_search"></label>
+
+                        <input type="submit" id="form_search" class="btn btn-dark btn-send pt-2 btn-block " value="Add"
+                            (click)="add()">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card offer-card shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let sp of servicesResult">
+
+        <div class="row align-items-center">
+
+            <div class="col-sm-5">
+                <h3>{{sp['businessName']}}</h3>
+            </div>
+            <div class="col-sm-5">
+                {{sp['businessAddress']}}<br>
+                {{sp['spPhone']}}
+            </div>
+
+            <div class="col-sm-2">
+                <input type="button" id="book" class="btn btn-dark btn-send pt-2 btn-block " value="Book an Appointment"
+                    (click)="book(sp.spId)">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

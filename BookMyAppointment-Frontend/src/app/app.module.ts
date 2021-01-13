@@ -20,6 +20,8 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { BookingComponent } from './booking/booking.component';
 import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-step-form.component';
+import { AddServiceComponent } from './add-service/add-service.component';
+import { ListServicesComponent } from './list-services/list-services.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-st
     AdminHomeComponent,
     UserSettingsComponent,
     BookingComponent,
-    TestMultiStepFormComponent
+    TestMultiStepFormComponent,
+    AddServiceComponent,
+    ListServicesComponent
     
   ],
   imports: [

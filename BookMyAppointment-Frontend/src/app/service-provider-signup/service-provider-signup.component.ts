@@ -49,6 +49,16 @@ export class ServiceProviderSignupComponent implements OnInit {
   }
 
   signUp() {
+  //   this.serviceProvider.services=[{"serviceName":"Test1","serviceDuration":"00:00:30","servicePrice":100},{"serviceName":"Test2","serviceDuration":"00:00:30","servicePrice":2000}];
+  //   this.serviceProvider.businessHours=[
+  //     {"open":false,"day":0},
+  //     {"openTime":"00:10:00","closeTime":"00:18:00","open":true,"day":1},
+  //     {"openTime":"00:10:00","closeTime":"00:18:00","open":true,"day":2},
+  //     {"openTime":"00:10:00","closeTime":"00:18:00","open":true,"day":3},
+  //     {"openTime":"00:10:00","closeTime":"00:18:00","open":true,"day":4},
+  //     {"openTime":"00:10:00","closeTime":"00:18:00","open":true,"day":5},
+  //     {"openTime":"00:10:00","closeTime":"00:18:00","open":true,"day":6}
+  // ];
     this.authenticationService.serviceProviderSignUp(this.serviceProvider)
     .subscribe(data=>console.log(data),error=>console.log(error));
     this.router.navigate(["login"]);
