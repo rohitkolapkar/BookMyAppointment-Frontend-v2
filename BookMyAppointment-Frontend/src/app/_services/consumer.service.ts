@@ -1,34 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { City } from '../_models/City';
+import { ServiceCategory } from '../_models/ServiceCategory';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConsumerService {
-
-  private baseUrl='http://localhost:8080/api/v1/consumer';
-  constructor(private http: HttpClient) { }
   
+
+    //apiUrl:'http://localhost:8080/api/v1'
+    private apiUrl=environment.apiUrl;
+
+    constructor(private httpClient:HttpClient) { }
+
+  serviceProviderSearch(cityId,categoryId): Observable<any>{
+    return this.httpClient.get(`${this.apiUrl}/serviceProvider/search?cityId=${cityId}&categoryId=${categoryId}`);
+  }
   
-  createConsumer(consumer: object): Observable<Object>{
-    return this.http.post(`${this.baseUrl}`, consumer);
-  }
-
-  updateConsumer(consumer: object): Observable<Object>{
-    return this.http.put(`${this.baseUrl}/updateConsumer/`, consumer);
-  }
-
-  deleteConsumer(id: number): Observable<any>{
-    return this.http.delete(`${this.baseUrl}/deleteConsumer/${id}`,{ responseType: 'text'});
-  }
-
-  getConsumer(userId: number): Observable<any>{
-    return this.http.get(`${this.baseUrl}/searchConsumer/${userId}`);
-  }
-
-  getConsumerList(): Observable<any>{
-    return this.http.get(`${this.baseUrl}/consumers`)
-  }
-
 }

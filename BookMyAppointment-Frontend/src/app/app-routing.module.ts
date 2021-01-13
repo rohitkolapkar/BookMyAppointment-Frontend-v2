@@ -12,6 +12,8 @@ import { ServiceProviderHomeComponent } from './service-provider-home/service-pr
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { Role } from './_models/role';
+import { BookingComponent } from './booking/booking.component';
+import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-step-form.component';
 
 
 
@@ -46,6 +48,12 @@ const routes: Routes = [
   {
     path:'c/home',
     component:ConsumerHomeComponent,
+    canActivate:[AuthguardService],
+    data:{roles:[Role.Consumer]}
+  },
+  {
+    path:'c/book',
+    component:BookingComponent,
     canActivate:[AuthguardService],
     data:{roles:[Role.Consumer]}
   },

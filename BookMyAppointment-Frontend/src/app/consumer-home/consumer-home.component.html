@@ -4,18 +4,75 @@
 <div class="container-fluid">
 
     <div class="card offer-card shadow-lg p-3 mb-5 bg-white rounded">
-
         <div class="row">
-
             <div class="col-sm-12">
+                <h1>Book an Appointment</h1>
+            </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Consumer works</h4>
-                        <p class="card-text">Some example text. Some example text.</p>
+        </div>
+
+        <form id="contact-form" role="form">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group"> <label for="form_city">Select City
+                            *</label>
+                        <select id="form_city" name="city" class="form-control" required="required"
+                            data-error="Please select the city." (change)="filterCity($event)">
+                            <option value="" selected disabled>--Select City--</option>
+
+                            <option [value]="city['cityId']" *ngFor="let city of cities">
+                                {{city['cityName']}}
+
+                            </option>
+
+
+                        </select>
 
                     </div>
                 </div>
+                <div class=" col-sm-4">
+                    <div class="form-group"> <label for="form_category">Select Category
+                            *</label>
+                        <select id="form_category" name="category" class="form-control" required="required"
+                            data-error="Please select the Category." (change)="filterCategory($event)">
+                            <option value="" selected disabled>--Select Category--</option>
+                            <option [value]="city['categoryId']" *ngFor="let city of categories">
+                                {{city['categoryName']}}
+
+                            </option>
+
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="form_search"></label>
+
+                        <input type="submit" id="form_search" class="btn btn-dark btn-send pt-2 btn-block "
+                            value="Search" (click)="search()">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card offer-card shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let sp of serviceProvidersResult">
+
+        <div class="row align-items-center">
+
+            <div class="col-sm-5">
+                <h3>{{sp['businessName']}}</h3>
+            </div>
+            <div class="col-sm-5">
+                {{sp['businessAddress']}}<br>
+                {{sp['spPhone']}}
+            </div>
+
+            <div class="col-sm-2">
+                <input type="button" id="book" class="btn btn-dark btn-send pt-2 btn-block " value="Book an Appointment"
+                    (click)="book(sp.spId)">
             </div>
 
         </div>

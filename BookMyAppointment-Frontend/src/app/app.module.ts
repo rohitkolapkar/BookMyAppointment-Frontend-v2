@@ -18,6 +18,8 @@ import { ConsumerHomeComponent } from './consumer-home/consumer-home.component';
 import { ServiceProviderHomeComponent } from './service-provider-home/service-provider-home.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { BookingComponent } from './booking/booking.component';
+import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-step-form.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     ConsumerHomeComponent,
     ServiceProviderHomeComponent,
     AdminHomeComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    BookingComponent,
+    TestMultiStepFormComponent
     
   ],
   imports: [
