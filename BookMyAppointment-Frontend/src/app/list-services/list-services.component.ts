@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceProvider } from '../_models/ServiceProvider';
 import { Router } from '@angular/router';
 import { Service } from '../_models/Service';
+import { ServiceProviderService } from '../_services/service-provider.service';
 
 @Component({
   selector: 'app-list-services',
@@ -10,16 +10,40 @@ import { Service } from '../_models/Service';
 })
 export class ListServicesComponent implements OnInit {
 
+  spId:number;
   service : Service=new Service();
   servicesResult:any[]=[];
   
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private serviceProviderService:ServiceProviderService) { }
 
   ngOnInit(): void {
+    this.spId=+sessionStorage.getItem("spId");
+    this.serviceProviderService.getAllServices(this.spId)
+    .subscribe(
+      data=>{
+        //console.log(data.responseListObject);
+        this.servicesResult=data.responseListObject;
+      },
+    error=>console.log(error)
+    );
+
+
   }
   add(){
-    this.service.spId=+sessionStorage.getItem("userId");
-    console.log(this.service);
+    this.service.serviceProvider.spId=+sessionStorage.getItem("spId");
+    //console.log(this.service);
+
+    this.serviceProviderService.addService(this.service)
+    .subscribe(
+      data=>{
+        console.log(data.responseListObject);
+      },
+    error=>console.log(error)
+    );
+
+    this.router.navigate(["sp/services"]);
+
   }
 
 }

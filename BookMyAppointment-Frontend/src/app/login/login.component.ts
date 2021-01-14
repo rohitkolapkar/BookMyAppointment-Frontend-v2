@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  user: User={"id": 0, "name":"", "password":"", "mobile": "", "email":"", "active": null, "role":""};
+  consumerId:number;
+  spId:number;
+  user: User={"id": 0, "name":"", "password":"", "mobile": "", "email":"", "active": null, "role":"","consumerId":0,
+  "spId":0};
   invalidLogin = false;
   userBlocked = false;
   userRole:string;
@@ -39,6 +41,8 @@ export class LoginComponent implements OnInit {
           this.user.role=data.responseObject.role;
           this.user.name=data.responseObject.name;
           this.user.active=data.responseObject.active;
+          this.user.consumerId=data.responseObject.consumerId;
+          this.user.spId=data.responseObject.spId;
 
           if(this.user.active===true){
             this.invalidLogin=false;
@@ -68,6 +72,7 @@ export class LoginComponent implements OnInit {
        this.loginService.setUserName(this.user.name);
       if(this.user.role === 'consumer') {
         sessionStorage.setItem('userRole', 'consumer');
+        sessionStorage.setItem('consumerId', String(this.user.consumerId));
         //calling setConsumer method in Authentication service
         this.loginService.setConsumer();
         this.invalidLogin = false;
@@ -75,6 +80,7 @@ export class LoginComponent implements OnInit {
       }
       else if(this.user.role === 'serviceProvider') {
         sessionStorage.setItem('userRole', 'serviceProvider');
+        sessionStorage.setItem('spId', String(this.user.spId));
         this.loginService.setServiceProvider();
         this.invalidLogin = false;
         this.router.navigate(["sp/home"]);

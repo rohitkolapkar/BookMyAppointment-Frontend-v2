@@ -25,8 +25,6 @@ export class AuthenticationService {
   }
 
   serviceProviderSignUp(serviceProvider: ServiceProvider): Observable<Object>{
-    console.log("In service layer ")
-    console.log(serviceProvider)
     return this.httpClient.post(`${this.apiUrl}/serviceProvider`, serviceProvider);
   }
 
@@ -51,6 +49,8 @@ export class AuthenticationService {
     sessionStorage.removeItem('userId');
     sessionStorage.removeItem('userEmail');
     sessionStorage.removeItem('userRole');
+    sessionStorage.removeItem('consumerId');
+    sessionStorage.removeItem('spId');
     this.setVisitor();
   }
   setUserName(name:string){

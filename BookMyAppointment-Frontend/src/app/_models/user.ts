@@ -6,5 +6,7 @@ export class User{
     name:string;
     mobile:string;
     active:boolean;
+    consumerId:number;
+    spId:number;
     
 }

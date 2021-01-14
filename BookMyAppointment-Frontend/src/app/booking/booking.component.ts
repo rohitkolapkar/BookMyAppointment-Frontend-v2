@@ -14,7 +14,7 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.spId = +this.route.snapshot.queryParamMap.get('spid');
-    this.consumerId=+sessionStorage.getItem("userId");
+    this.consumerId=+sessionStorage.getItem("consumerId");
     console.log("from book route");
     console.log(this.spId);
     console.log(this.consumerId);

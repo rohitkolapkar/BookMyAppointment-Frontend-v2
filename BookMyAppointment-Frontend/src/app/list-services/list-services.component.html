@@ -59,23 +59,35 @@
 
     </div>
 
-    <div class="card offer-card shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let sp of servicesResult">
+    <div class="card offer-card shadow-lg p-3 mb-5 bg-white rounded">
 
-        <div class="row align-items-center">
-
-            <div class="col-sm-5">
-                <h3>{{sp['businessName']}}</h3>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>List of Services</h2>
             </div>
-            <div class="col-sm-5">
-                {{sp['businessAddress']}}<br>
-                {{sp['spPhone']}}
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Service Name</th>
+                            <th>Service Duration</th>
+                            <th>Service Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sp of servicesResult">
+                            <td>{{sp.serviceName}}</td>
+                            <td>{{sp.serviceDuration}}</td>
+                            <td>{{sp.servicePrice}}</td>
+                            <!--<td><button (click)="removeAirport(airport.airportCode)" class="btn btn-danger">Delete</button>
+                      <button (click)="modifyAirport(airport.airportCode)" class="btn btn-info" style="margin-left: 10px">update</button>
+                        <button (click)="airportDetails(airport.airportCode)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                    </td>-->
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <div class="col-sm-2">
-                <input type="button" id="book" class="btn btn-dark btn-send pt-2 btn-block " value="Book an Appointment"
-                    (click)="book(sp.spId)">
-            </div>
-
         </div>
 
     </div>

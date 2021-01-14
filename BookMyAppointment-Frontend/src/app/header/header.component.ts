@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
   userRole:string;
 
   constructor(private router:Router,public nav:AuthenticationService) {
-    console.log("In constructor of header");
     this._subscription = nav.userChange.subscribe((value) => { 
       if(value==="consumer"){
         this.consumer = true; 
