@@ -22,6 +22,8 @@ import { BookingComponent } from './booking/booking.component';
 import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-step-form.component';
 import { AddServiceComponent } from './add-service/add-service.component';
 import { ListServicesComponent } from './list-services/list-services.component';
+import { ConsumerListComponent } from './consumer-list/consumer-list.component';
+import { ServiceProviderListComponent } from './service-provider-list/service-provider-list.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ListServicesComponent } from './list-services/list-services.component';
     BookingComponent,
     TestMultiStepFormComponent,
     AddServiceComponent,
-    ListServicesComponent
+    ListServicesComponent,
+    ConsumerListComponent,
+    ServiceProviderListComponent
     
   ],
   imports: [

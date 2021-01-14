@@ -88,10 +88,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["a/home"]);
   }
   consumersList(){
-    //pending
+    this.router.navigate(["a/consumers"]);
   }
   serviceProvicersList(){
-    //pending
+    this.router.navigate(["a/serviceProviders"]);
   }
 
 

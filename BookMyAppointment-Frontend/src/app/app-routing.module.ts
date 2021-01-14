@@ -15,6 +15,8 @@ import { Role } from './_models/role';
 import { BookingComponent } from './booking/booking.component';
 import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-step-form.component';
 import { ListServicesComponent } from './list-services/list-services.component';
+import { ConsumerListComponent } from './consumer-list/consumer-list.component';
+import { ServiceProviderListComponent } from './service-provider-list/service-provider-list.component';
 
 
 
@@ -74,6 +76,18 @@ const routes: Routes = [
   {
     path:'a/home',
     component:AdminHomeComponent,
+    canActivate:[AuthguardService],
+    data:{roles:[Role.Admin]}
+  },
+  {
+    path:'a/consumers',
+    component:ConsumerListComponent,
+    canActivate:[AuthguardService],
+    data:{roles:[Role.Admin]}
+  },
+  {
+    path:'a/serviceProviders',
+    component:ServiceProviderListComponent,
     canActivate:[AuthguardService],
     data:{roles:[Role.Admin]}
   },
