@@ -28,7 +28,30 @@
                 <div class="card-body">
                     <h4 class="card-title">Book an Appointment</h4>
                     <p class="card-text">Fill the details below</p>
-                    <!--experiment start-->
+                    <div class="alert alert-warning" *ngIf="bookingWarning">
+                        <strong>Choosen Date-Time slot is not available.</strong><br>
+                        <small>Select different Date-Time slot</small><br>
+                    </div>
+
+                    <!--Date and Time -- starts-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_datetime">Pick a date*</label>
+                                <input type="date" class="form-control" id="form_datetime" (change)="setDate($event)">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_time">Pick a time*</label>
+                                <input type="time" class="form-control" id="form_time" min="10:00" max="20:00"
+                                    data-error="Please select a service." (change)="setTime($event)">
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--Date and Time -- ends-->
+                    <!--service selector start-->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group"> <label for="form_service">Select a Service
@@ -44,37 +67,46 @@
 
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <div class="form-group"> <label for="form_cityName">City *</label>
-                                <select id="form_cityName" name="cityName" class="form-control"
-                                    required="required" data-error="Please specify your city."
-                                    (change)="filterCity($event)">
-                                    <option value="" selected disabled>--Select City--</option>
-                                    <option [value]="city['cityId']" *ngFor="let city of cities">
-                                        {{city['cityName']}}
-
-                                    </option>
-                                </select>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="form_serviceDuration">Service Duration
+                                    *</label>
+                                <input type="text" class="form-control" required="required" id="form_serviceDuration"
+                                    [(ngModel)]="serviceDuration" readonly>
                             </div>
-                        </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="form_servicePrice">Service Price
+                                    *</label>
+                                <input type="text" class="form-control" required="required" id="form_servicePrice"
+                                    [(ngModel)]="servicePrice" readonly>
+                            </div>
+                        </div>
                     </div>
-                    <!--experiment end-->
+                    <!--service selector end-->
+                    <!--Buttons starts-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="button" class="btn btn-primary" value="Check Availability"
+                                    id="form_checkButton" (click)="check()">
+                            </div>
+                        </div>
+                        <div class="alert alert-success" *ngIf="hideButton">
+                            <strong>Choosen Date-Time slot is available.</strong><br>
+                            <small>Proceed for Booking</small><br>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="button" class="btn btn-primary" value="Confirm Booking"
+                                    id="form_confirmButton" *ngIf="hideButton" (click)="book()">
+                            </div>
+                        </div>
 
-
-
-                    <div class="form-group">
-                        <label for="usr">Old password:</label>
-                        <input type="text" class="form-control" id="usr">
                     </div>
-                    <div class="form-group">
-                        <label for="pwd">New Password:</label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">Confirm New Password:</label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <button type="button" class="btn btn-primary" (click)="book()">Book</button>
+                    <!--Buttons end-->
+                    <!-- <button type="button" class="btn btn-primary" (click)="book()">Book</button> -->
                 </div>
             </div>
         </div>

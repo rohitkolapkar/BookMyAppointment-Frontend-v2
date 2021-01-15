@@ -16,4 +16,14 @@ export class BookingService {
   bookAnAppointment(appointmentObj:Appointment): Observable<any>{
     return this.httpClient.post<any>(`${this.apiUrl}/appointment`,appointmentObj);
   }
+  
+  checkAnAppointment(appointmentObj:Appointment): Observable<any>{
+    return this.httpClient.post<any>(`${this.apiUrl}/appointment/check`,appointmentObj);
+  }
+
+  getAllAppointments(consumerId):Observable<any>{
+    //console.log(consumerId);
+    return this.httpClient.get(`${this.apiUrl}/appointment/getAppointments?consumerId=${consumerId}`);
+  }
+
 }

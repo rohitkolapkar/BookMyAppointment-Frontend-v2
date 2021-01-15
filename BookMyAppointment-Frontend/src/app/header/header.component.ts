@@ -106,12 +106,10 @@ export class HeaderComponent implements OnInit {
   cProfile(){
 
   }
-  cUpcomingAppointments(){
-
+  cAppointments(){
+    this.router.navigate(["c/appointments"]);
   }
-  cPastAppointments(){
-
-  }
+ 
 
   //service provider routers
   spSignUp(){

@@ -9,6 +9,9 @@ import { ServiceProviderService } from '../_services/service-provider.service';
   styleUrls: ['./list-services.component.css']
 })
 export class ListServicesComponent implements OnInit {
+  //pagination config
+  config: any;
+  
 
   spId:number;
   service : Service=new Service();
@@ -27,8 +30,17 @@ export class ListServicesComponent implements OnInit {
       },
     error=>console.log(error)
     );
+    //pagination config initialisation
+    this.config = {
+      itemsPerPage: 1,
+      currentPage: 1,
+      totalItems: this.servicesResult.length
+    };
 
-
+  }
+  //pagination event
+  pageChanged(event){
+    this.config.currentPage = event;
   }
   add(){
     this.service.serviceProvider.spId=+sessionStorage.getItem("spId");

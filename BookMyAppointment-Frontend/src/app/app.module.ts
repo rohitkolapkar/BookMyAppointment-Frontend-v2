@@ -1,5 +1,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { AddServiceComponent } from './add-service/add-service.component';
 import { ListServicesComponent } from './list-services/list-services.component';
 import { ConsumerListComponent } from './consumer-list/consumer-list.component';
 import { ServiceProviderListComponent } from './service-provider-list/service-provider-list.component';
+import { ConsumerAppointmentListComponent } from './consumer-appointment-list/consumer-appointment-list.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { ServiceProviderListComponent } from './service-provider-list/service-pr
     AddServiceComponent,
     ListServicesComponent,
     ConsumerListComponent,
-    ServiceProviderListComponent
+    ServiceProviderListComponent,
+    ConsumerAppointmentListComponent
     
   ],
   imports: [
@@ -54,7 +57,8 @@ import { ServiceProviderListComponent } from './service-provider-list/service-pr
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    PasswordStrengthMeterModule
+    PasswordStrengthMeterModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

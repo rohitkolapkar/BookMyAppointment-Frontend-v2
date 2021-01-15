@@ -17,6 +17,7 @@ import { TestMultiStepFormComponent } from './test-multi-step-form/test-multi-st
 import { ListServicesComponent } from './list-services/list-services.component';
 import { ConsumerListComponent } from './consumer-list/consumer-list.component';
 import { ServiceProviderListComponent } from './service-provider-list/service-provider-list.component';
+import { ConsumerAppointmentListComponent } from './consumer-appointment-list/consumer-appointment-list.component';
 
 
 
@@ -57,6 +58,12 @@ const routes: Routes = [
   {
     path:'c/book',
     component:BookingComponent,
+    canActivate:[AuthguardService],
+    data:{roles:[Role.Consumer]}
+  },
+  {
+    path:'c/appointments',
+    component:ConsumerAppointmentListComponent,
     canActivate:[AuthguardService],
     data:{roles:[Role.Consumer]}
   },
