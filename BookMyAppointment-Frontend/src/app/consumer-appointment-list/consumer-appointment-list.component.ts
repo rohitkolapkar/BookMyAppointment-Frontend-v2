@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Service } from '../_models/Service';
 import { BookingService } from '../_services/booking.service';
-import { ServiceProviderService } from '../_services/service-provider.service';
+
 
 @Component({
   selector: 'app-consumer-appointment-list',
@@ -21,7 +20,7 @@ export class ConsumerAppointmentListComponent implements OnInit {
   ngOnInit(): void {
     //pagination config initialisation
     this.config = {
-      itemsPerPage: 10,
+      itemsPerPage: 5,
       currentPage: 1,
       totalItems: this.appointmentsResult.length
     };

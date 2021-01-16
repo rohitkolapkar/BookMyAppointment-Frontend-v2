@@ -26,6 +26,8 @@ import { ListServicesComponent } from './list-services/list-services.component';
 import { ConsumerListComponent } from './consumer-list/consumer-list.component';
 import { ServiceProviderListComponent } from './service-provider-list/service-provider-list.component';
 import { ConsumerAppointmentListComponent } from './consumer-appointment-list/consumer-appointment-list.component';
+import { ServiceProviderTodaysAptListComponent } from './service-provider-todays-apt-list/service-provider-todays-apt-list.component';
+import { ServiceProviderAptListComponent } from './service-provider-apt-list/service-provider-apt-list.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { ConsumerAppointmentListComponent } from './consumer-appointment-list/co
     ListServicesComponent,
     ConsumerListComponent,
     ServiceProviderListComponent,
-    ConsumerAppointmentListComponent
+    ConsumerAppointmentListComponent,
+    ServiceProviderTodaysAptListComponent,
+    ServiceProviderAptListComponent
     
   ],
   imports: [

@@ -21,9 +21,22 @@ export class BookingService {
     return this.httpClient.post<any>(`${this.apiUrl}/appointment/check`,appointmentObj);
   }
 
+  //getAllAppointments by consumerId
   getAllAppointments(consumerId):Observable<any>{
     //console.log(consumerId);
-    return this.httpClient.get(`${this.apiUrl}/appointment/getAppointments?consumerId=${consumerId}`);
+    return this.httpClient.get(`${this.apiUrl}/appointment/getAppointmentsByconsumerId?consumerId=${consumerId}`);
   }
+
+  //getAllAppointments by spId
+  getAllAppointmentsBySpId(spId):Observable<any>{
+    //console.log(spId);
+    return this.httpClient.get(`${this.apiUrl}/appointment/getAppointmentsBySpId?spId=${spId}`);
+  }
+
+    //getAppointments by spId and selected dates
+    getAppointmentsBySpIdDates(spId,startDateTime,endDateTime):Observable<any>{
+      //console.log(spId);
+      return this.httpClient.get(`${this.apiUrl}/appointment/getAppointmentsBySpIdDates?spId=${spId}&s=${startDateTime}&e=${endDateTime}`);
+    }
 
 }

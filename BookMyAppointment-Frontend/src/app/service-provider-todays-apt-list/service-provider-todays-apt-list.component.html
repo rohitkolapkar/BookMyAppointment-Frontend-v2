@@ -1,0 +1,45 @@
+<hr>
+<hr>
+<hr>
+<div class="container-fluid">
+
+    <div class="card offer-card shadow-lg p-3 mb-5 bg-white rounded">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>Your Appointments</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>With Whom</th>
+                            <th>Contact No.</th>
+                            <th>For What</th>
+                            <th>Date-Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let c of appointmentsResult | paginate: config; let i=index">
+                            <td>{{ (config.currentPage - 1) * config.itemsPerPage + i +1 }}</td>
+                            <td>{{c.consumer.consumerName}}</td>
+                            <td>{{c.consumer.consumerPhone}}</td>
+                            <td>{{c.service.serviceName}}</td>
+                            <td>{{c.startDateTime}}</td>
+                            <!--<td><button (click)="removeAirport(airport.airportCode)" class="btn btn-danger">Delete</button>
+                      <button (click)="modifyAirport(airport.airportCode)" class="btn btn-info" style="margin-left: 10px">update</button>
+                        <button (click)="airportDetails(airport.airportCode)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                    </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+            </div>
+        </div>
+
+    </div>
+
+</div>

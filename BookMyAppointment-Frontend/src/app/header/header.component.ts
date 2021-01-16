@@ -118,6 +118,12 @@ export class HeaderComponent implements OnInit {
   spServices(){
     this.router.navigate(["sp/services"]);
   }
+  spTodaysAppt(){
+    this.router.navigate(["sp/todaysAppt"]);
+  }
+  spAllAppt(){
+    this.router.navigate(["sp/allAppt"]);
+  }
 
 
   ngOnDestroy() {

@@ -21,23 +21,19 @@ export class ListServicesComponent implements OnInit {
     private serviceProviderService:ServiceProviderService) { }
 
   ngOnInit(): void {
-    this.spId=+sessionStorage.getItem("spId");
-    this.serviceProviderService.getAllServices(this.spId)
-    .subscribe(
-      data=>{
-        //console.log(data.responseListObject);
-        this.servicesResult=data.responseListObject;
-      },
-    error=>console.log(error)
-    );
+
+    //calling function to get all services
+    this.getAllServices();
     //pagination config initialisation
     this.config = {
-      itemsPerPage: 1,
+      itemsPerPage: 5,
       currentPage: 1,
       totalItems: this.servicesResult.length
     };
 
   }
+
+
   //pagination event
   pageChanged(event){
     this.config.currentPage = event;
@@ -49,13 +45,28 @@ export class ListServicesComponent implements OnInit {
     this.serviceProviderService.addService(this.service)
     .subscribe(
       data=>{
-        console.log(data.responseListObject);
+        //calling function to get all services
+        this.getAllServices();
+        //console.log(data.responseListObject);
       },
     error=>console.log(error)
     );
 
-    this.router.navigate(["sp/services"]);
+    
+    
 
+  }
+
+  getAllServices(){
+    this.spId=+sessionStorage.getItem("spId");
+    this.serviceProviderService.getAllServices(this.spId)
+    .subscribe(
+      data=>{
+        //console.log(data.responseListObject);
+        this.servicesResult=data.responseListObject;
+      },
+    error=>console.log(error)
+    );
   }
 
 }
